@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.js": "/hocs-renderprops-hooks/static/js/main.e176ed12.chunk.js",
-    "main.js.map": "/hocs-renderprops-hooks/static/js/main.e176ed12.chunk.js.map",
+    "main.js": "/hocs-renderprops-hooks/static/js/main.8293cc1f.chunk.js",
+    "main.js.map": "/hocs-renderprops-hooks/static/js/main.8293cc1f.chunk.js.map",
     "runtime-main.js": "/hocs-renderprops-hooks/static/js/runtime-main.df19091e.js",
     "runtime-main.js.map": "/hocs-renderprops-hooks/static/js/runtime-main.df19091e.js.map",
-    "static/js/2.a7e436a1.chunk.js": "/hocs-renderprops-hooks/static/js/2.a7e436a1.chunk.js",
-    "static/js/2.a7e436a1.chunk.js.map": "/hocs-renderprops-hooks/static/js/2.a7e436a1.chunk.js.map",
+    "static/js/2.07d1778b.chunk.js": "/hocs-renderprops-hooks/static/js/2.07d1778b.chunk.js",
+    "static/js/2.07d1778b.chunk.js.map": "/hocs-renderprops-hooks/static/js/2.07d1778b.chunk.js.map",
     "index.html": "/hocs-renderprops-hooks/index.html",
-    "precache-manifest.4efe92255e245c6a8894461ec88b4f54.js": "/hocs-renderprops-hooks/precache-manifest.4efe92255e245c6a8894461ec88b4f54.js",
+    "precache-manifest.12de2feba1592b8b03739fc9ee49fcc0.js": "/hocs-renderprops-hooks/precache-manifest.12de2feba1592b8b03739fc9ee49fcc0.js",
     "service-worker.js": "/hocs-renderprops-hooks/service-worker.js"
   },
   "entrypoints": [
     "static/js/runtime-main.df19091e.js",
-    "static/js/2.a7e436a1.chunk.js",
-    "static/js/main.e176ed12.chunk.js"
+    "static/js/2.07d1778b.chunk.js",
+    "static/js/main.8293cc1f.chunk.js"
   ]
 }
