@@ -1,4 +1,6 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect } from 'react';
+import { fromEvent, Subject } from 'rxjs';
+import { map, takeUntil, repeatWhen } from 'rxjs/operators';
 
 const useMouse = () => {
   const [pos, setPos] = useState({
@@ -6,24 +8,24 @@ const useMouse = () => {
     y: 0,
   });
 
-  const startTracking = useCallback(e => {
-    setPos({
-      x: e.clientX,
-      y: e.clientY,
-    });
-  }, []);
-
-  const stopTracking = useCallback(() => {
-    window.removeEventListener('mousemove', startTracking);
-    window.removeEventListener('click', stopTracking);
-  }, [startTracking]);
-
   useEffect(() => {
-    window.addEventListener('mousemove', startTracking);
-    window.addEventListener('click', stopTracking);
+    const toggler = new Subject();
 
-    return stopTracking;
-  }, [startTracking, stopTracking]);
+    const clicks = fromEvent(window, 'click').subscribe(() => toggler.next());
+
+    const tracker = fromEvent(window, 'mousemove')
+      .pipe(
+        map(({ clientX: x, clientY: y }) => ({ x, y })),
+        takeUntil(toggler),
+        repeatWhen(() => toggler),
+      )
+      .subscribe(pos => setPos(pos));
+
+    return () => {
+      clicks.unsubscribe();
+      tracker.unsubscribe();
+    };
+  }, []);
 
   return pos;
 };

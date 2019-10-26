@@ -1,4 +1,6 @@
 import React from 'react';
+import { fromEvent, Subject } from 'rxjs';
+import { map, takeUntil, repeatWhen } from 'rxjs/operators';
 
 const withMouse = Component =>
   class MouseHOC extends React.Component {
@@ -10,25 +12,23 @@ const withMouse = Component =>
       };
     }
 
-    startTracking = e => {
-      this.setState({
-        x: e.clientX,
-        y: e.clientY,
-      });
-    };
-
-    stopTracking = () => {
-      window.removeEventListener('mousemove', this.startTracking);
-      window.removeEventListener('click', this.stopTracking);
-    };
-
     componentDidMount() {
-      window.addEventListener('mousemove', this.startTracking);
-      window.addEventListener('click', this.stopTracking);
+      const toggler = new Subject();
+
+      this.clicks = fromEvent(window, 'click').subscribe(() => toggler.next());
+
+      this.tracker = fromEvent(window, 'mousemove')
+        .pipe(
+          map(({ clientX: x, clientY: y }) => ({ x, y })),
+          takeUntil(toggler),
+          repeatWhen(() => toggler),
+        )
+        .subscribe(pos => this.setState(pos));
     }
 
     componentWillUnmount() {
-      this.stopTracking();
+      this.clicks.unsubscribe();
+      this.tracker.unsubscribe();
     }
 
     render() {

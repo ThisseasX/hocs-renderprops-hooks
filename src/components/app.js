@@ -14,6 +14,7 @@ const App = () => {
       <MouseHOC />
       <MouseTracker render={Mouse} />
       <Mouse {...pos} />
+      <p>Click anywhere to pause</p>
     </>
   );
 };
