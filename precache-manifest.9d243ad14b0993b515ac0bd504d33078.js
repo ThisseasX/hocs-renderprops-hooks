@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "738dcfbfde8c400d22e65d5b255bef59",
+    "revision": "3b46f1354f12074ac787b0259ad8aaff",
     "url": "/hocs-renderprops-hooks/index.html"
   },
   {
@@ -8,8 +8,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/hocs-renderprops-hooks/static/js/2.c0baf2cb.chunk.js"
   },
   {
-    "revision": "716dc5746f9576f57a16",
-    "url": "/hocs-renderprops-hooks/static/js/main.06aa8a31.chunk.js"
+    "revision": "8b6b6afa79fc04235afa",
+    "url": "/hocs-renderprops-hooks/static/js/main.5dd60983.chunk.js"
   },
   {
     "revision": "b414a464958060e9d1f6",
