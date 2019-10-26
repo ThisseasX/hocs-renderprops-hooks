@@ -10,25 +10,25 @@ const withMouse = Component =>
       };
     }
 
-    eventListener = e => {
+    startTracking = e => {
       this.setState({
         x: e.clientX,
         y: e.clientY,
       });
     };
 
-    cancel = () => {
-      window.removeEventListener('mousemove', this.eventListener);
-      window.removeEventListener('click', this.cancel);
+    stopTracking = () => {
+      window.removeEventListener('mousemove', this.startTracking);
+      window.removeEventListener('click', this.stopTracking);
     };
 
     componentDidMount() {
-      window.addEventListener('mousemove', this.eventListener);
-      window.addEventListener('click', this.cancel);
+      window.addEventListener('mousemove', this.startTracking);
+      window.addEventListener('click', this.stopTracking);
     }
 
     componentWillUnmount() {
-      this.cancel();
+      this.stopTracking();
     }
 
     render() {
